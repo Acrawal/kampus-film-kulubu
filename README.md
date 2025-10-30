@@ -1,1 +1,2 @@
-Ömer Said Karakuş kampus-film-kulubu-azure.vercel.app
+Ömer Said Karakuş 
+kampus-film-kulubu-azure.vercel.app
