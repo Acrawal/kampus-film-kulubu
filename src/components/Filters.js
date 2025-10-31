@@ -20,7 +20,7 @@ const Filters = ({ dispatch, currentFilters }) => {
           <option value="8">8+</option>
         </select>
       </label>
-      {/* İstenirse buraya Tür ve Dil filtreleri eklenebilir */}
+      {}
     </div>
   );
 };
