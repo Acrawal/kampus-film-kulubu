@@ -1,4 +1,3 @@
-// A S K İ Y E T L İ V E Z O R U N L U R E D U C E R A K S İ Y O N L A R I
 export const ACTIONS = {
   FETCH_INIT: 'FETCH_INIT',
   FETCH_SUCCESS: 'FETCH_SUCCESS',
@@ -11,7 +10,7 @@ export const ACTIONS = {
   CLEAR_WATCHLIST: 'CLEAR_WATCHLIST',
 };
 
-const PAGE_SIZE = 6; // Zorunlu sayfa boyutu
+const PAGE_SIZE = 6;
 
 export const appReducer = (state, action) => {
   switch (action.type) {
@@ -19,14 +18,13 @@ export const appReducer = (state, action) => {
       return { ...state, loading: true, error: null };
 
     case ACTIONS.FETCH_SUCCESS:
-      // TVMaze sonuçları { show: {...} } formatında gelir, sadece show objesini alıyoruz.
       const shows = action.payload.map(item => ({ ...item.show, score: item.score }));
       
       return {
         ...state,
         loading: false,
         data: shows,
-        currentPage: 1, // Yeni aramada sayfayı sıfırla
+        currentPage: 1, 
         totalPages: Math.ceil(shows.length / PAGE_SIZE),
         error: null,
       };
@@ -38,18 +36,15 @@ export const appReducer = (state, action) => {
       return { ...state, query: action.payload };
 
     case ACTIONS.SET_FILTERS:
-      // Sayfayı sıfırlayarak filtreleri uygula
       return { ...state, filters: { ...state.filters, ...action.payload }, currentPage: 1 };
       
     case ACTIONS.SET_PAGE:
-      // Sayfa sınırlarını kontrol et
       if (action.payload < 1 || action.payload > state.totalPages) {
         return state;
       }
       return { ...state, currentPage: action.payload };
       
     case ACTIONS.ADD_WATCHLIST:
-      // Zaten listede yoksa ekle (Dizi ID'sine göre kontrol)
       if (state.watchlist.some(item => item.id === action.payload.id)) {
         return state;
       }
@@ -70,17 +65,17 @@ export const appReducer = (state, action) => {
 };
 
 export const initialState = {
-  data: [],            // API'den çekilen ham dizi listesi
-  watchlist: [],       // Gösterime girecekler listesi
-  loading: false,      // Yüklenme durumu
-  error: null,         // Hata nesnesi
-  query: 'friends',    // Varsayılan sorgu (Zorunlu)
-  filters: {           // Filtre durumları
+  data: [],            
+  watchlist: [],       
+  loading: false,      
+  error: null,         
+  query: 'friends',    
+  filters: {           
     genre: '',
     language: '',
     minRating: 0,
   },
-  currentPage: 1,      // Geçerli sayfa numarası
-  pageSize: PAGE_SIZE, // Sayfa boyutu: 6 (Zorunlu)
-  totalPages: 1,       // Toplam sayfa sayısı
+  currentPage: 1,      
+  pageSize: PAGE_SIZE,
+  totalPages: 1,     
 };
