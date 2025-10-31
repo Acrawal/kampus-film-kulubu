@@ -6,7 +6,6 @@ import { ACTIONS } from '../context/AppReducer';
 const TVCard = ({ show }) => {
   const { dispatch } = useContext(AppContext);
   const rating = show.rating?.average || 'N/A';
-  // HTML etiketlerini temizle ve özeti kısalt
   const summary = show.summary ? show.summary.replace(/<[^>]+>/g, '').substring(0, 100) + '...' : 'Özet yok.';
   const imageUrl = show.image?.medium || 'https://via.placeholder.com/210x295?text=No+Image';
 
