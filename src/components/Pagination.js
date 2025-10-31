@@ -4,11 +4,8 @@ import { ACTIONS } from '../context/AppReducer';
 const Pagination = ({ state, dispatch }) => {
   const { currentPage, totalPages } = state;
 
-  // Filtreleme yapıldığı zaman toplam sayfa sayısı Home.js'te hesaplanıp state'e yansıtılmadığı için,
-  // Burada sadeleştirilmiş bir kontrol kullanıyoruz.
   
-  if (totalPages <= 1) return null; // Tek sayfa ise gösterme
-
+  if (totalPages <= 1) return null; 
   const setPage = (page) => {
     dispatch({ type: ACTIONS.SET_PAGE, payload: page });
   };
