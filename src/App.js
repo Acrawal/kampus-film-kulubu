@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// AppState, Context klasöründen default export ile çekiliyor
 import AppState from './context/AppState'; 
 import Home from './pages/Home';
 import ShowDetail from './pages/ShowDetail';
@@ -8,7 +7,6 @@ import './App.css';
 
 function App() {
   return (
-    // Uygulama genelinde useReducer state'ini AppState ile sarmalıyoruz
     <AppState>
       <Router>
         <Routes>
